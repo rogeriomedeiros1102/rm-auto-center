@@ -13,7 +13,7 @@ export const SERVICES: Service[] = [
     title: 'Mecânica Geral',
     description: 'Diagnóstico computadorizado, suspensão, freios e motor.',
     longDescription: 'Oferecemos soluções completas em mecânica preventiva e corretiva. Nossa equipe utiliza diagnósticos avançados para garantir que seu motor, freios e suspensão funcionem com máxima eficiência e segurança.',
-    image: 'images/mecanica.jpg',
+    image: '/images/mecanica.jpg',
     features: ['Injeção Eletrônica', 'Suspensão e Freios', 'Troca de Óleo', 'Revisão Preventiva']
   },
   {
@@ -21,7 +21,7 @@ export const SERVICES: Service[] = [
     title: 'Funilaria',
     description: 'Restauração de lataria e remoção de amassados.',
     longDescription: 'Recupere a estética original do seu carro. Utilizamos técnicas avançadas de funilaria para grandes reparos e pequenos ajustes, sempre focando na estrutura original e no alinhamento perfeito das peças.',
-    image: 'images/funilaria.jpg',
+    image: '/images/funilaria.jpg',
     features: ['Recuperação de Lataria', 'Recuperação de Para-choques', 'Solda Especializada', 'Alinhamento de Chassi']
   },
   {
@@ -29,7 +29,7 @@ export const SERVICES: Service[] = [
     title: 'Pintura Automotiva',
     description: 'Pintura em cabine pressurizada com fidelidade de cor.',
     longDescription: 'Acabamento de alto padrão com laboratório de cores próprio. Garantimos a mesma tonalidade original do seu veículo utilizando tintas e vernizes de alta resistência.',
-    image: 'images/pintura.jpg',
+    image: '/images/pintura.jpg',
     features: ['Pintura Geral', 'Retoques Localizados', 'Cabine Pressurizada', 'Verniz Premium']
   },
   {
@@ -37,7 +37,7 @@ export const SERVICES: Service[] = [
     title: 'Estética Automotiva',
     description: 'Polimento, vitrificação e higienização interna profunda.',
     longDescription: 'O brilho e a proteção que seu carro merece. Realizamos vitrificação cerâmica, polimento técnico e higienização detalhada para um interior impecável e protegido contra o tempo.',
-    image: 'images/estetica.jpg',
+    image: '/images/estetica.jpg',
     features: ['Vitrificação 9H', 'Polimento Técnico', 'Higienização Interna', 'Limpeza de Couro']
   }
 ];
