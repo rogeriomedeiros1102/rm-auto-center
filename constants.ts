@@ -2,7 +2,7 @@
 import { Service } from './types';
 
 export const COMPANY_PHONE = "5584999845443"; 
-export const COMPANY_PHONE_DISPLAY = "084 99984-5443 / 084 99180-6669";
+export const COMPANY_PHONE_DISPLAY = "84 99984-5443 / 84 99180-6669";
 export const COMPANY_EMAIL = "rmautocenternatal@gmail.com";
 export const COMPANY_ADDRESS = "Rua Duque de Caxias, 170 - Ribeira - Natal/RN";
 export const COMPANY_INSTAGRAM = "rmautocenternatal";
