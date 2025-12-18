@@ -32,13 +32,9 @@ const App: React.FC = () => {
             <section className="snap-section relative overflow-hidden border-b border-[#003d33]">
               <div className="absolute inset-0 z-0">
                 <img 
-                  src="images/hero-bg.jpg" 
+                  src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2000&auto=format&fit=crop" 
                   className="w-full h-full object-cover opacity-30 grayscale"
                   alt="Background Car"
-                  onError={(e) => {
-                    // Fallback para Unsplash caso o usuário ainda não tenha a imagem local
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2000&auto=format&fit=crop";
-                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#003d33]/20 to-[#f37021]/10" />

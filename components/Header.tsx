@@ -14,15 +14,18 @@ const Header: React.FC<HeaderProps> = ({ onQuoteClick, onHomeClick }) => {
           onClick={onHomeClick}
           className="flex items-center cursor-pointer group"
         >
-          <img 
-            src="images/logo.png" 
-            alt="RM Auto Center" 
-            className="h-10 md:h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105 mr-3"
-            onError={(e) => {
-              // Se a logo local não existir, apenas oculta o elemento img e mantém o texto
-              e.currentTarget.style.display = 'none';
-            }}
-          />
+          <div className="relative h-12 w-12 md:h-14 md:w-14 mr-3 overflow-hidden rounded-lg bg-[#111] border border-[#003d33] flex items-center justify-center">
+            <img 
+              src="images/logo.png" 
+              alt="Logo" 
+              className="h-full w-full object-contain transition-all duration-300 group-hover:scale-110"
+              onError={(e) => {
+                // Imagem de fallback caso a logo.png ainda não exista na pasta images
+                e.currentTarget.src = "https://cdn-icons-png.flaticon.com/512/3202/3202926.png";
+                e.currentTarget.className = "h-8 w-8 opacity-50 invert";
+              }}
+            />
+          </div>
           <div className="text-2xl md:text-3xl font-black font-heading italic tracking-tighter leading-none select-none">
             <span className="text-white">RM</span>{' '}
             <span className="text-[#f37021]">AUTO</span>{' '}

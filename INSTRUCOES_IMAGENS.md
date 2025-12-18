@@ -1,31 +1,26 @@
 
 # 🛠️ Guia de Gerenciamento de Imagens - RM Auto Center
 
-Siga este tutorial para substituir as imagens do seu site sem precisar mexer no código.
+Siga este tutorial para substituir as imagens do seu site.
 
 ## 📂 Estrutura de Pastas
-Crie uma pasta chamada `images` na raiz do seu projeto (onde está o arquivo `index.html`). O site está configurado para buscar os arquivos lá dentro.
+Crie uma pasta chamada `images` na raiz do seu projeto. O site buscará as fotos ali dentro.
 
 ## 🖼️ Tabela de Arquivos Necessários
 
-| Local no Site | Nome Exato do Arquivo | Formato Recomendado | Dimensões Sugeridas |
+| Local no Site | Nome Exato do Arquivo | Formato Recomendado | Observação |
 | :--- | :--- | :--- | :--- |
-| **Logo (Menu)** | `logo.png` | PNG (Fundo Transparente) | 200px (largura) |
-| **Fundo Principal (Hero)** | `hero-bg.jpg` | JPG | 1920x1080px |
-| **Mecânica Geral** | `mecanica.jpg` | JPG | 800x600px |
-| **Funilaria & Martelinho** | `funilaria.jpg` | JPG | 800x600px |
-| **Pintura Automotiva** | `pintura.jpg` | JPG | 800x600px |
-| **Estética & Detalhamento** | `estetica.jpg` | JPG | 800x600px |
+| **Logomarca** | `logo.png` | PNG (Transparente) | Aparece ao lado do nome no menu |
+| **Mecânica Geral** | `mecanica.jpg` | JPG | Foto da página de mecânica |
+| **Funilaria** | `funilaria.jpg` | JPG | Foto da página de funilaria |
+| **Pintura** | `pintura.jpg` | JPG | Foto da página de pintura |
+| **Estética** | `estetica.jpg` | JPG | Foto da página de estética |
 
-## 💡 Dicas para Melhores Resultados
+## 💡 Dicas Importantes
 
-1.  **Nomes de Arquivo:** O nome deve ser **exatamente** igual ao da tabela acima, em letras minúsculas e sem espaços.
-2.  **Formatos:** 
-    *   Use `.jpg` para fotos (são mais leves).
-    *   Use `.png` para a logo (permite transparência).
-3.  **Peso das Imagens:** Tente manter cada imagem abaixo de **500 KB** para o site carregar rápido. Você pode usar sites como o *TinyJPG* ou *Squoosh* para comprimir as fotos.
-4.  **Proporção:** Para as fotos dos serviços, prefira imagens horizontais (retangulares).
-5.  **Qualidade:** Como o site é escuro e premium, fotos com boa iluminação e foco farão toda a diferença na experiência do seu cliente.
+1.  **Logo:** Para a logomarca ficar perfeita, salve-a como `logo.png` com o fundo transparente.
+2.  **Fundo Principal (Hero):** O fundo da página inicial agora é automático e não precisa de arquivo local, mantendo o visual original conforme solicitado.
+3.  **Fallback:** Se você ainda não colocou sua `logo.png`, o site mostrará um ícone automotivo padrão para não ficar vazio.
 
 ---
-*Dúvida: O site possui um sistema de segurança (fallback). Se você deletar uma imagem e esquecer de colocar a nova, ele tentará carregar uma imagem padrão da internet para não deixar o site com erro visual.*
+*Lembre-se: Use sempre letras minúsculas nos nomes dos arquivos para que o sistema reconheça corretamente.*
