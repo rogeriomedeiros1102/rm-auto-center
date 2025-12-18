@@ -9,6 +9,13 @@ interface ServiceDetailProps {
 }
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onBack, onQuote }) => {
+  const fallbacks: Record<string, string> = {
+    mecanica: 'https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=1200&auto=format&fit=crop',
+    funilaria: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1200&auto=format&fit=crop',
+    pintura: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop',
+    estetica: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1200&auto=format&fit=crop'
+  };
+
   return (
     <div className="min-h-screen container mx-auto px-4 py-16 animate-in fade-in slide-in-from-top-6 duration-700 bg-[#0a0a0a]">
       <button 
@@ -28,6 +35,9 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onBack, onQuote 
             src={service.image} 
             alt={service.title} 
             className="relative rounded-3xl w-full aspect-[4/3] object-cover shadow-2xl border border-[#003d33]"
+            onError={(e) => {
+              e.currentTarget.src = fallbacks[service.id] || fallbacks.mecanica;
+            }}
           />
         </div>
 

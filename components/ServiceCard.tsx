@@ -8,6 +8,14 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, onClick }) => {
+  // Fallbacks de alta qualidade para manter o visual enquanto o usuário não faz upload
+  const fallbacks: Record<string, string> = {
+    mecanica: 'https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=800&auto=format&fit=crop',
+    funilaria: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop',
+    pintura: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop',
+    estetica: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=800&auto=format&fit=crop'
+  };
+
   return (
     <div 
       onClick={onClick}
@@ -18,6 +26,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, onClick }) => {
           src={service.image} 
           alt={service.title} 
           className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+          onError={(e) => {
+            // Se a imagem local não for encontrada, usa o fallback do Unsplash
+            e.currentTarget.src = fallbacks[service.id] || fallbacks.mecanica;
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] to-transparent opacity-60" />
       </div>
