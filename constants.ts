@@ -2,7 +2,7 @@
 import { Service } from './types';
 
 export const COMPANY_PHONE = "5584999845443"; 
-export const COMPANY_PHONE_DISPLAY = "084 99984-54443 / 084 99180-6669";
+export const COMPANY_PHONE_DISPLAY = "084 99984-5443 / 084 99180-6669";
 export const COMPANY_EMAIL = "rmautocenternatal@gmail.com";
 export const COMPANY_ADDRESS = "Rua Duque de Caxias, 170 - Ribeira - Natal/RN";
 export const COMPANY_INSTAGRAM = "rmautocenternatal";
@@ -11,33 +11,33 @@ export const SERVICES: Service[] = [
   {
     id: 'mecanica',
     title: 'Mecânica Geral',
-    description: 'Diagnóstico computadorizado e reparos de alta precisão.',
-    longDescription: 'Nossa equipe de especialistas utiliza tecnologia de ponta para garantir o desempenho máximo e a segurança do seu veículo. Desde revisões preventivas até reparos complexos em motor e transmissão.',
-    image: 'images/mecanica.jpg',
-    features: ['Injeção Eletrônica', 'Suspensão e Freios', 'Motor e Câmbio', 'Revisão Preventiva']
+    description: 'Diagnóstico computadorizado, suspensão, freios e motor.',
+    longDescription: 'Oferecemos soluções completas em mecânica preventiva e corretiva. Nossa equipe utiliza diagnósticos avançados para garantir que seu motor, freios e suspensão funcionem com máxima eficiência e segurança.',
+    image: 'https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=800&auto=format&fit=crop',
+    features: ['Injeção Eletrônica', 'Suspensão e Freios', 'Troca de Óleo', 'Revisão Preventiva']
   },
   {
     id: 'funilaria',
-    title: 'Funilaria & Martelinho',
-    description: 'Restauração de lataria com técnicas artesanais e precisas.',
-    longDescription: 'Recuperamos a originalidade do seu veículo com técnicas de funilaria artesanal e o famoso martelinho de ouro, eliminando amassados sem comprometer a pintura original.',
-    image: 'images/funilaria.jpg',
-    features: ['Martelinho de Ouro', 'Recuperação de Para-choques', 'Alinhamento de Chassi', 'Solda Especializada']
+    title: 'Funilaria',
+    description: 'Restauração de lataria e remoção de amassados.',
+    longDescription: 'Recupere a estética original do seu carro. Utilizamos técnicas avançadas de funilaria para grandes reparos e pequenos ajustes, sempre focando na estrutura original e no alinhamento perfeito das peças.',
+    image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop',
+    features: ['Recuperação de Lataria', 'Recuperação de Para-choques', 'Solda Especializada', 'Alinhamento de Chassi']
   },
   {
     id: 'pintura',
     title: 'Pintura Automotiva',
-    description: 'Acabamento impecável com laboratório de cores próprio.',
-    longDescription: 'Trabalhamos com cabine de pintura pressurizada e tintas premium para garantir uma fidelidade de cor absoluta e um brilho duradouro que valoriza seu patrimônio.',
-    image: 'images/pintura.jpg',
-    features: ['Cabine de Pintura', 'Cores Customizadas', 'Pintura Parcial ou Geral', 'Verniz de Alta Resistência']
+    description: 'Pintura em cabine pressurizada com fidelidade de cor.',
+    longDescription: 'Acabamento de alto padrão com laboratório de cores próprio. Garantimos a mesma tonalidade original do seu veículo utilizando tintas e vernizes de alta resistência.',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop',
+    features: ['Pintura Geral', 'Retoques Localizados', 'Cabine Pressurizada', 'Verniz Premium']
   },
   {
     id: 'estetica',
-    title: 'Estética & Detalhamento',
-    description: 'O luxo e o cuidado que o seu carro merece nos mínimos detalhes.',
-    longDescription: 'Transformamos seu veículo com serviços de detalhamento avançado, desde vitrificação de pintura até higienização interna profunda com ozônio.',
-    image: 'images/estetica.jpg',
-    features: ['Vitrificação Cerâmica', 'Polimento Técnico', 'Limpeza de Couro', 'Higienização Interna']
+    title: 'Estética Automotiva',
+    description: 'Polimento, vitrificação e higienização interna profunda.',
+    longDescription: 'O brilho e a proteção que seu carro merece. Realizamos vitrificação cerâmica, polimento técnico e higienização detalhada para um interior impecável e protegido contra o tempo.',
+    image: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=800&auto=format&fit=crop',
+    features: ['Vitrificação 9H', 'Polimento Técnico', 'Higienização Interna', 'Limpeza de Couro']
   }
 ];

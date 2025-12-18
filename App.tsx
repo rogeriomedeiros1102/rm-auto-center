@@ -12,14 +12,19 @@ const App: React.FC = () => {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const handleServiceClick = (service: Service) => {
+    setSelectedService(service);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className="h-screen bg-[#0a0a0a] text-slate-100 flex flex-col selection:bg-[#f37021] selection:text-white overflow-hidden">
+    <div className="min-h-screen bg-[#050505] text-slate-100 flex flex-col selection:bg-[#f37021] selection:text-white">
       <Header 
         onQuoteClick={() => setIsQuoteModalOpen(true)} 
         onHomeClick={() => setSelectedService(null)}
       />
 
-      <main className={`flex-grow ${!selectedService ? 'snap-container' : 'overflow-y-auto'}`}>
+      <main className="flex-grow">
         {selectedService ? (
           <ServiceDetail 
             service={selectedService} 
@@ -28,36 +33,36 @@ const App: React.FC = () => {
           />
         ) : (
           <div className="animate-in fade-in duration-1000">
-            {/* Seção 1: Hero (Snap Start) */}
-            <section className="snap-section relative overflow-hidden border-b border-[#003d33]">
-              <div className="absolute inset-0 z-0">
+            {/* Hero Section */}
+            <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2000&auto=format&fit=crop" 
-                  className="w-full h-full object-cover opacity-30 grayscale"
-                  alt="Background Car"
+                  src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=2000&auto=format&fit=crop" 
+                  className="w-full h-full object-cover opacity-20 grayscale brightness-50"
+                  alt="Car detail"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#003d33]/20 to-[#f37021]/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
               </div>
               
               <div className="container mx-auto px-4 text-center relative z-10">
-                <div className="inline-block bg-[#003d33] text-[#f37021] px-4 py-1.5 rounded-md font-black tracking-[0.5em] text-[10px] uppercase mb-8 border border-[#f37021]/30">
-                  EXCELÊNCIA AUTOMOTIVA
-                </div>
-                <h2 className="text-4xl md:text-7xl lg:text-8xl font-black font-heading mb-8 leading-none italic tracking-tighter">
-                  CUIDADO <span className="text-[#f37021]">PREMIUM</span><br/>
-                  <span className="text-white">PARA SEU VEÍCULO</span>
-                </h2>
-                <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-xl font-medium leading-relaxed mb-12">
-                  A excelência que seu veículo merece com as técnicas de pintura, estética e mecânica mais avançadas do mercado.
+                <span className="text-[#f37021] font-black tracking-[0.4em] text-[10px] md:text-xs uppercase mb-6 block animate-bounce">
+                  SOLUÇÕES AUTOMOTIVAS DE ELITE
+                </span>
+                <h1 className="text-5xl md:text-8xl font-black font-heading mb-8 leading-[0.9] italic tracking-tighter">
+                  ESTÉTICA E <span className="text-[#f37021]">PRECISÃO</span><br/>
+                  <span className="text-white">PARA SEU CARRO</span>
+                </h1>
+                <p className="text-slate-400 max-w-xl mx-auto text-sm md:text-base font-medium leading-relaxed mb-10 px-6">
+                  Mecânica, Pintura e Estética de alto padrão em Natal/RN. 
+                  Transformamos seu veículo com a atenção aos detalhes que ele merece.
                 </p>
-                <div className="flex flex-wrap justify-center gap-6">
-                  <button 
+                <div className="flex justify-center">
+                   <button 
                     onClick={() => setIsQuoteModalOpen(true)}
-                    className="bg-[#f37021] text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-white hover:text-black transition-all shadow-[0_0_30px_rgba(243,112,33,0.4)] flex items-center gap-3"
+                    className="group bg-[#f37021] text-white px-10 py-5 rounded-2xl font-black text-sm tracking-widest hover:bg-white hover:text-black transition-all shadow-xl flex items-center gap-4"
                   >
                     SOLICITAR ORÇAMENTO
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </button>
@@ -65,97 +70,95 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            {/* Seção 2: Serviços (Snap Start) */}
-            <section className="snap-section bg-[#0a0a0a] py-10">
-              <div className="container mx-auto px-4 mb-12 text-center md:text-left">
-                <h3 className="text-white font-black text-4xl md:text-6xl font-heading uppercase italic tracking-tighter">
-                  Serviços <span className="text-[#00838f]">Especializados</span>
-                </h3>
-                <div className="w-24 h-2 bg-[#f37021] mt-4 rounded-full mx-auto md:mx-0"></div>
+            {/* Bandeja de Serviços (Horizontal Slider) */}
+            <section className="py-20 bg-[#080808]">
+              <div className="container mx-auto px-4 mb-16 text-center">
+                <h2 className="text-3xl md:text-5xl font-black font-heading uppercase italic tracking-tighter mb-4">
+                   Nossas <span className="text-[#f37021]">Especialidades</span>
+                </h2>
               </div>
 
-              <div className="relative group">
+              <div className="service-tray-container relative">
                 <div 
                   ref={scrollRef}
-                  className="flex overflow-x-auto gap-8 px-6 md:px-[10%] scrollbar-hide snap-x snap-mandatory pb-12"
+                  className="flex overflow-x-auto gap-8 px-6 md:px-[10%] scrollbar-hide pb-12 snap-x snap-mandatory"
                 >
                   {SERVICES.map((service) => (
                     <div key={service.id} className="snap-center">
                       <ServiceCard 
                         service={service} 
-                        onClick={() => setSelectedService(service)} 
+                        onClick={() => handleServiceClick(service)} 
                       />
                     </div>
                   ))}
                 </div>
               </div>
-
-              <div className="bg-[#003d33]/10 border-y border-[#003d33]/30 py-8 overflow-hidden mt-auto">
-                 <div className="animate-marquee">
-                    <div className="flex gap-20 items-center px-10">
-                      <span className="font-heading font-black text-2xl md:text-4xl italic text-white/5 uppercase">Estética Automotiva</span>
-                      <span className="text-[#f37021] text-2xl font-black">●</span>
-                      <span className="font-heading font-black text-2xl md:text-4xl italic text-white/5 uppercase">Mecânica de Precisão</span>
-                      <span className="text-[#f37021] text-2xl font-black">●</span>
-                      <span className="font-heading font-black text-2xl md:text-4xl italic text-white/5 uppercase">Funilaria e Pintura</span>
-                      <span className="text-[#f37021] text-2xl font-black">●</span>
-                      <span className="font-heading font-black text-2xl md:text-4xl italic text-white/5 uppercase">Estética Automotiva</span>
-                      <span className="text-[#f37021] text-2xl font-black">●</span>
-                      <span className="font-heading font-black text-2xl md:text-4xl italic text-white/5 uppercase">Mecânica de Precisão</span>
-                      <span className="text-[#f37021] text-2xl font-black">●</span>
-                      <span className="font-heading font-black text-2xl md:text-4xl italic text-white/5 uppercase">Funilaria e Pintura</span>
-                      <span className="text-[#f37021] text-2xl font-black">●</span>
-                    </div>
-                 </div>
-              </div>
             </section>
+
+            {/* Marquee de Serviços */}
+            <div className="bg-[#0f0f0f] border-y border-[#1a1a1a] py-6 overflow-hidden">
+               <div className="animate-marquee">
+                  <div className="flex gap-16 items-center px-8">
+                    {['VITRIFICAÇÃO', 'MARTELINHO DE OURO', 'PINTURA TÉCNICA', 'REVISÃO MECÂNICA', 'POLIMENTO', 'HIGIENIZAÇÃO'].map((item, i) => (
+                      <React.Fragment key={i}>
+                        <span className="font-heading font-black text-2xl italic text-white/10 uppercase whitespace-nowrap">{item}</span>
+                        <span className="text-[#f37021] text-xl font-black">/</span>
+                      </React.Fragment>
+                    ))}
+                    {['VITRIFICAÇÃO', 'MARTELINHO DE OURO', 'PINTURA TÉCNICA', 'REVISÃO MECÂNICA', 'POLIMENTO', 'HIGIENIZAÇÃO'].map((item, i) => (
+                      <React.Fragment key={i + 10}>
+                        <span className="font-heading font-black text-2xl italic text-white/10 uppercase whitespace-nowrap">{item}</span>
+                        <span className="text-[#f37021] text-xl font-black">/</span>
+                      </React.Fragment>
+                    ))}
+                  </div>
+               </div>
+            </div>
           </div>
         )}
       </main>
 
-      {!selectedService && (
-        <footer className="bg-[#050505] border-t border-[#003d33] py-6 shrink-0">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4 text-center md:text-left">
-              <div className="space-y-2">
-                <div className="text-xl font-black font-heading italic tracking-tighter leading-none">
-                  <span className="text-white">RM</span>{' '}
-                  <span className="text-[#f37021]">AUTO</span>{' '}
-                  <span className="text-white">CENTER</span>
-                </div>
-                <p className="text-slate-500 text-[8px] uppercase tracking-[0.2em]">Tecnologia Automotiva Avançada</p>
+      <footer className="bg-[#050505] border-t border-[#111] py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div className="col-span-1 md:col-span-1">
+              <div className="text-2xl font-black font-heading italic tracking-tighter text-white mb-4">
+                RM <span className="text-[#f37021]">AUTO</span> CENTER
               </div>
-
-              <div className="space-y-2 text-slate-400 text-[10px] md:text-xs">
-                <p className="flex items-start justify-center md:justify-start gap-2">
-                   <svg className="w-4 h-4 text-[#f37021] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                   {COMPANY_ADDRESS}
-                </p>
-                <p className="flex items-center justify-center md:justify-start gap-2">
-                   <svg className="w-4 h-4 text-[#f37021] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                   {COMPANY_EMAIL}
-                </p>
-              </div>
-
-              <div className="space-y-2 text-slate-400 text-[10px] md:text-xs">
-                <p className="flex items-center justify-center md:justify-start gap-2">
-                   <svg className="w-4 h-4 text-[#f37021] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                   {COMPANY_PHONE_DISPLAY}
-                </p>
-                <div className="flex justify-center md:justify-start space-x-4 pt-1">
-                  <a href={`https://instagram.com/${COMPANY_INSTAGRAM}`} target="_blank" rel="noopener noreferrer" className="text-[9px] text-[#f37021] font-bold hover:text-white transition-colors tracking-widest uppercase">INSTAGRAM</a>
-                  <span className="text-[#003d33]">|</span>
-                  <a href={`https://wa.me/${COMPANY_PHONE}`} target="_blank" rel="noopener noreferrer" className="text-[9px] text-[#f37021] font-bold hover:text-white transition-colors tracking-widest uppercase">WHATSAPP</a>
-                </div>
-              </div>
+              <p className="text-slate-500 text-xs leading-relaxed max-w-xs mx-auto md:mx-0">
+                Excelência em cuidados automotivos. De pequenos reparos a restaurações completas.
+              </p>
             </div>
-            
-            <div className="pt-4 border-t border-[#003d33]/30 text-center">
-               <p className="text-slate-600 text-[8px] uppercase tracking-[0.3em]">© 2024 RM AUTO CENTER - NATAL/RN</p>
+
+            <div className="space-y-4">
+              <h4 className="text-[10px] font-black uppercase text-[#f37021] tracking-widest">Endereço</h4>
+              <p className="text-slate-400 text-xs leading-relaxed">{COMPANY_ADDRESS}</p>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="text-[10px] font-black uppercase text-[#f37021] tracking-widest">Contatos</h4>
+              <p className="text-slate-400 text-xs">{COMPANY_PHONE_DISPLAY}</p>
+              <p className="text-slate-400 text-xs">{COMPANY_EMAIL}</p>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="text-[10px] font-black uppercase text-[#f37021] tracking-widest">Siga-nos</h4>
+              <div className="flex justify-center md:justify-start gap-4">
+                 <a href={`https://instagram.com/${COMPANY_INSTAGRAM}`} className="text-white hover:text-[#f37021] transition-colors">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                 </a>
+                 <a href={`https://wa.me/${COMPANY_PHONE}`} className="text-white hover:text-[#f37021] transition-colors">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                 </a>
+              </div>
             </div>
           </div>
-        </footer>
-      )}
+          
+          <div className="mt-12 pt-8 border-t border-[#111] text-center">
+             <p className="text-slate-700 text-[10px] font-bold uppercase tracking-[0.3em]">© 2024 RM AUTO CENTER - NATAL/RN | TODOS OS DIREITOS RESERVADOS</p>
+          </div>
+        </div>
+      </footer>
 
       <QuoteModal 
         isOpen={isQuoteModalOpen} 

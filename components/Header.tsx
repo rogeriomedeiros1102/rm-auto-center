@@ -14,19 +14,18 @@ const Header: React.FC<HeaderProps> = ({ onQuoteClick, onHomeClick }) => {
           onClick={onHomeClick}
           className="flex items-center cursor-pointer group"
         >
-          <div className="relative h-12 w-12 md:h-14 md:w-14 mr-3 overflow-hidden rounded-lg bg-[#111] border border-[#003d33] flex items-center justify-center">
+          <div className="h-12 w-12 mr-3 bg-[#111] border border-[#f37021]/30 rounded-lg flex items-center justify-center p-1 overflow-hidden transition-all duration-300 group-hover:border-[#f37021]">
             <img 
               src="images/logo.png" 
-              alt="Logo" 
-              className="h-full w-full object-contain transition-all duration-300 group-hover:scale-110"
+              alt="RM" 
+              className="h-full w-full object-contain"
               onError={(e) => {
-                // Imagem de fallback caso a logo.png ainda não exista na pasta images
                 e.currentTarget.src = "https://cdn-icons-png.flaticon.com/512/3202/3202926.png";
-                e.currentTarget.className = "h-8 w-8 opacity-50 invert";
+                e.currentTarget.style.filter = "invert(1) brightness(2)";
               }}
             />
           </div>
-          <div className="text-2xl md:text-3xl font-black font-heading italic tracking-tighter leading-none select-none">
+          <div className="text-xl md:text-2xl font-black font-heading italic tracking-tighter leading-none select-none">
             <span className="text-white">RM</span>{' '}
             <span className="text-[#f37021]">AUTO</span>{' '}
             <span className="text-white">CENTER</span>
@@ -35,11 +34,11 @@ const Header: React.FC<HeaderProps> = ({ onQuoteClick, onHomeClick }) => {
 
         <button
           onClick={onQuoteClick}
-          className="bg-[#f37021] hover:bg-[#ff7e2e] text-white px-5 md:px-8 py-3 rounded-xl font-black text-xs md:text-sm tracking-widest transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(243,112,33,0.3)] border-b-4 border-orange-800 flex items-center gap-3"
+          className="group bg-[#f37021] hover:bg-white hover:text-black text-white px-5 md:px-8 py-3 rounded-xl font-black text-[10px] md:text-xs tracking-widest transition-all transform active:scale-95 shadow-[0_0_20px_rgba(243,112,33,0.2)] border-b-2 border-orange-800 hover:border-white flex items-center gap-2"
         >
           SOLICITAR ORÇAMENTO
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          <svg className="w-4 h-4 text-white group-hover:text-black transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>

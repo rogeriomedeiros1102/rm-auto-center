@@ -15,31 +15,29 @@
       }
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #0a0a0a;
+        background-color: #050505;
         color: #f1f5f9;
         margin: 0;
+        overflow-x: hidden;
       }
       .font-heading {
         font-family: 'Oswald', sans-serif;
       }
       ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: #050505;
+        background: #0a0a0a;
       }
       ::-webkit-scrollbar-thumb {
-        background: #003d33;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
         background: #f37021;
+        border-radius: 10px;
       }
       .glass {
-        background: rgba(10, 10, 10, 0.85);
-        backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(243, 112, 33, 0.2);
+        background: rgba(10, 10, 10, 0.9);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(243, 112, 33, 0.1);
       }
       .scrollbar-hide::-webkit-scrollbar {
         display: none;
@@ -49,21 +47,6 @@
         scrollbar-width: none;
       }
       
-      /* Snap Scroll Classes */
-      .snap-container {
-        scroll-snap-type: y mandatory;
-        overflow-y: auto;
-        height: calc(100vh - 80px); /* Ajuste para o tamanho do header aproximado */
-      }
-      .snap-section {
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        height: calc(100vh - 80px);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
       @keyframes marquee {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
@@ -71,15 +54,25 @@
       .animate-marquee {
         display: flex;
         width: 200%;
-        animation: marquee 30s linear infinite;
+        animation: marquee 25s linear infinite;
+      }
+      
+      .service-tray-container {
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #ffffff 0%, #f37021 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     </style>
   <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
